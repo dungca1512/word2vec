@@ -22,7 +22,7 @@ def cosine_distance(A, B):
 def get_vector(token, data):
     for item in data:
         if item["token"] == token:
-            return np.array(item["vector"])
+            return np.array(item["vector"], dtype=float)
 
 data = load_vectors("./glove.6B.50d.txt")
 
@@ -32,8 +32,5 @@ token2 = input("Token 2: ")
 vector1 = get_vector(token1, data)
 vector2 = get_vector(token2, data)
 
-print(vector1.shape)
-print(vector2.shape)
-
-# distance = cosine_distance(vector1, vector2)
-# print(f"Khoảng cách Cosine giữa {token1} và {token2}: {distance}")
+distance = cosine_distance(vector1, vector2)
+print(f"Cosine distance between {token1} and {token2} is: {distance}")
